@@ -8,11 +8,13 @@ import ratpack.server.RatpackServer;
 /**
  * This example shows a blocking operation within Ratpack. Ratpack runs the `Blocking.get(...)` into a separate thread pool.
  * A Netty server is run, routing DELETE HTTP requests with path '/:days' to the DeletingHandler.
+ * A unit test of this example is under /src/test/java package
  */
 public class Example2 {
 
+    @FunctionalInterface
     public interface Datastore {
-        default int deleteOlderThan(int days) {return days;}
+        int deleteOlderThan(int days);
     }
 
     public static class DeletingHandler extends InjectionHandler {
@@ -25,6 +27,6 @@ public class Example2 {
 
     public static void main(String[] args) throws Exception {
         RatpackServer.start(server ->
-                server.handlers(chain -> chain.delete(":days", ctx -> DeletingHandler.handle(ctx, new Datastore() {}))));
+                server.handlers(chain -> chain.delete(":days", ctx -> DeletingHandler.handle(ctx, days -> days))));
     }
 }
