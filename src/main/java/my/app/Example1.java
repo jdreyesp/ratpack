@@ -2,7 +2,12 @@ package my.app;
 
 import ratpack.server.RatpackServer;
 
-public class Main {
+/**
+ * Simple example. A netty server is set up in port 5050, handling two main endpoints:
+ * /        => returns text body response with 'Hello world'
+ * /:name    => returns text body response with 'Hello ' + :name (i.e. calling /diego will return 'Hello Diego')
+ */
+public class Example1 {
 
     public static void main(String[] args) throws Exception {
         RatpackServer.start(server ->
