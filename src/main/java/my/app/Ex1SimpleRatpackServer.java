@@ -7,7 +7,7 @@ import ratpack.server.RatpackServer;
  * /        => returns text body response with 'Hello world'
  * /:name    => returns text body response with 'Hello ' + :name (i.e. calling /diego will return 'Hello Diego')
  */
-public class Example1 {
+public class Ex1SimpleRatpackServer {
 
     public static void main(String[] args) throws Exception {
         RatpackServer.start(server ->

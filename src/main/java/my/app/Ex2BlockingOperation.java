@@ -10,7 +10,7 @@ import ratpack.server.RatpackServer;
  * A Netty server is run, routing DELETE HTTP requests with path '/:days' to the DeletingHandler.
  * A unit test of this example is under /src/test/java package
  */
-public class Example2 {
+public class Ex2BlockingOperation {
 
     @FunctionalInterface
     public interface Datastore {
